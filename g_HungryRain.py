@@ -5,6 +5,7 @@
 from PicoGameBoy import PicoGameBoy
 import time
 from random import randint, choice
+import machine
 
 pgb = PicoGameBoy()
 
