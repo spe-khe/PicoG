@@ -52,16 +52,18 @@ timer.init(freq=4, mode=Timer.PERIODIC, callback=game_iteration)
 while True:
     # Taster abfragen
     if not button_pressed:  # nur ein Richtungswechsel pro Iteration ist möglich
-        if pgb.button_right() and not button_right_previous:
+        button_right = pgb.button_right()
+        button_left = pgb.button_left()
+        if button_right and not button_right_previous:
             direction = (direction + 1) % 4  # Rollover über Modulo
             button_pressed = True
-        button_right_previous = pgb.button_right()
+        button_right_previous = button_right
 
-        if pgb.button_left() and not button_left_previous:
+        if button_left and not button_left_previous:
             # statt einmal nach links wird dreimal nach rechts abgebogen → Rollover mit Modulo funktioniert auch hier
             direction = (direction + (4 - 1)) % 4
             button_pressed = True
-        button_left_previous = pgb.button_left()
+        button_left_previous = button_left
 
     # Spieliteration
     if game_step:  # Iteration nur, wenn die entsprechende Zeit abgelaufen ist
