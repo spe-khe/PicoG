@@ -1,5 +1,6 @@
 # PicoFlappyBird.py by Matthieu Mistler
 # Flappy Bird game for the Raspberry Pi Pico Game Boy
+import machine
 
 from PicoGameBoy import PicoGameBoy
 import time
@@ -198,12 +199,18 @@ while True:
             break
         
     #Game over
-    
-    pgb.fill_rect(120-55,120-30,110,60,PicoGameBoy.color(0,0,0))
-    pgb.text("GAME OVER",85,118,PicoGameBoy.color(255,255,255))        
+
+    pgb.fill_rect(10, 40, 220, 100, PicoGameBoy.color(0, 0, 0))
+    pgb.text("GAME OVER", 85, 75, PicoGameBoy.color(255, 255, 255))
+    pgb.text("Press B to restart", 50, 100, PicoGameBoy.color(255, 255, 255))
+    pgb.text("or A to reset", 70, 125, PicoGameBoy.color(255, 255, 255))
+
     pgb.show()
     
     time.sleep(1)
 
-    while not pgb.any_button():
-        time.sleep(0.1)
+    while True:
+        if pgb.button_B():
+            machine.reset()
+        elif pgb.button_A():
+            break
