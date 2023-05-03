@@ -46,7 +46,7 @@ def game_iteration(t):
     game_step = True
 
 
-timer.init(freq=4, mode=Timer.PERIODIC, callback=game_iteration)
+timer.init(freq=8, mode=Timer.PERIODIC, callback=game_iteration)
 
 # Hauptschleife
 while True:
@@ -94,15 +94,11 @@ while True:
         snake_head_x = snake[-1][0] + dir_x
         snake_head_y = snake[-1][1] + dir_y
 
-        if snake_head_x < 0:
-            snake_head_x = GAME_WIDTH - 1
-        elif snake_head_x >= GAME_WIDTH:
-            snake_head_x = 0
+        if snake_head_x < 0 or snake_head_x >= GAME_WIDTH:
+            break
 
-        if snake_head_y < 0:
-            snake_head_y = GAME_HEIGHT - 1
-        elif snake_head_y >= GAME_HEIGHT:
-            snake_head_y = 0
+        if snake_head_y < 0 or snake_head_y >= GAME_HEIGHT:
+            break
 
         if [snake_head_x, snake_head_y] in snake:
             break
@@ -117,6 +113,7 @@ while True:
         # Display aktualisieren
         pgb.fill(BLACK)  # clear
         pgb.fill_rect(reward[0] * PIXEL_FACTOR, reward[1] * PIXEL_FACTOR, PIXEL_FACTOR, PIXEL_FACTOR, RED)
+        pgb.rect(0, 0, pgb.width, pgb.height, WHITE)
         for pixel in snake:  # Snake zeichnen
             pgb.fill_rect(pixel[0] * PIXEL_FACTOR + 1, pixel[1] * PIXEL_FACTOR + 1, PIXEL_FACTOR - 2, PIXEL_FACTOR - 2,
                           WHITE)
