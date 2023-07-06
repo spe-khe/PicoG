@@ -179,7 +179,7 @@ while True:
             x_f=x_f+98    
      
         #Hit Box verification...
-        
+                
         if intersect(x,y,32,20,x_p1+1,y_p1-2,52,240):
             gameover=True
             
@@ -193,6 +193,9 @@ while True:
             gameover=True
         
         if y > Y_F :
+            gameover=True
+            
+        if y < -10:
             gameover=True
             
         if gameover:
