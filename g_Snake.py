@@ -1,7 +1,5 @@
 import random
-
 from PicoGameBoy import PicoGameBoy
-from random import randint
 import time
 from machine import Timer
 import machine
