@@ -1,7 +1,7 @@
 # Pi-Pico-Game-Boy
 Code for the Raspberry Pi Pico Game Boy
 
-This repo contains a customized version by SPE Karlsruhe. Further documentation (german) can be found on our [docs page](https://spe-khe.github.io/PicoGame)
+This repo contains a customized version by SPE Karlsruhe. Further documentation (german) can be found on our [docs page](https://spe-khe.github.io/PicoG)
 
 # How to Use?
 - Install MicroPython on the Raspberry Pi Pico
